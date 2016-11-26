@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,13 +21,70 @@
                     <view key="view" contentMode="scaleToFill" id="c11-4K-JaU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tB1-ca-0yV" userLabel="ConverterContainer">
+                                <rect key="frame" x="16" y="40" width="343" height="88"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KDj-Je-8jx">
+                                        <rect key="frame" x="20" y="8" width="303" height="72"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Рубли" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5iT-x7-fcJ">
+                                                <rect key="frame" x="0.0" y="21" width="115" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xJc-Fk-o0G">
+                                                <rect key="frame" x="125" y="0.0" width="53" height="72"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gfg-B2-weu">
+                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="32"/>
+                                                        <color key="backgroundColor" red="0.98091644048690796" green="0.98466533422470093" blue="0.94977527856826782" alpha="0.33061556208053694" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                                        <state key="normal" title=" --&gt;"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEm-s4-LfJ">
+                                                        <rect key="frame" x="0.0" y="40" width="53" height="32"/>
+                                                        <color key="backgroundColor" red="0.98091644048690796" green="0.98466533422470093" blue="0.94977527856826782" alpha="0.33061556208053694" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                                        <state key="normal" title=" &lt;--"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Евро" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BrZ-cH-paE">
+                                                <rect key="frame" x="188" y="21" width="115" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="5iT-x7-fcJ" firstAttribute="width" secondItem="BrZ-cH-paE" secondAttribute="width" id="yXQ-AS-0SY"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="KDj-Je-8jx" secondAttribute="trailing" constant="12" id="K4h-ad-hda"/>
+                                    <constraint firstAttribute="bottom" secondItem="KDj-Je-8jx" secondAttribute="bottom" constant="8" id="NwP-i0-1EN"/>
+                                    <constraint firstItem="KDj-Je-8jx" firstAttribute="top" secondItem="tB1-ca-0yV" secondAttribute="top" constant="8" id="SXS-GO-ihB"/>
+                                    <constraint firstItem="KDj-Je-8jx" firstAttribute="leading" secondItem="tB1-ca-0yV" secondAttribute="leadingMargin" constant="12" id="pGH-U8-T4E"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tB1-ca-0yV" firstAttribute="leading" secondItem="c11-4K-JaU" secondAttribute="leadingMargin" id="Amv-j3-28p"/>
+                            <constraint firstItem="tB1-ca-0yV" firstAttribute="trailing" secondItem="c11-4K-JaU" secondAttribute="trailingMargin" id="Gsn-ID-7zd"/>
+                            <constraint firstItem="tB1-ca-0yV" firstAttribute="top" secondItem="7hm-Sa-f83" secondAttribute="bottom" constant="20" id="SZe-7d-cN6"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Конвертор" id="nk0-dR-LGW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vC8-cf-ZQA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="148" y="-522"/>
+            <point key="canvasLocation" x="148" y="-522.18890554722645"/>
         </scene>
         <!--Привет!-->
         <scene sceneID="tne-QT-ifu">

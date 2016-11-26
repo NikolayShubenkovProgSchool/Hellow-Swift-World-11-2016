@@ -10,16 +10,39 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var nameTextField: UITextField!
+
+    
+    @IBAction func greetingButtonPressed(_ sender: UIButton)
+    {
+        
+        greetUser()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    private func greetUser()
+    {
+        guard let name = nameTextField.text,
+            name.characters.count > 0 else {
+                return
+        }
+        
+        let alert = UIAlertController(title: "Ура!!!",
+                                      message: "Привет, \(name)!",
+                                      preferredStyle: .alert)
+        
+        let helloAction = UIAlertAction(title: "Привет!",
+                                        style: .cancel,
+                                        handler: nil)
+        
+        alert.addAction(helloAction)
+        
+        present(alert,
+                animated: true,
+                completion:{
+                    print("Похоже на экране что-то появилось")
+        })
     }
-
-
+    
+    
 }
 

@@ -33,6 +33,13 @@ class ConverterViewController: UIViewController {
     {
         setupConverterContainer()
         setupButtons()
+        setupTextFields()
+    }
+    
+    private func setupTextFields()
+    {
+        rubTextField.delegate = self
+        euroTextField.delegate = self
     }
     
     private func setupConverterContainer()
@@ -83,5 +90,30 @@ class ConverterViewController: UIViewController {
         
         rubTextField.text = "\(rub) ₽"
     }
-    
 }
+
+extension ConverterViewController : UITextFieldDelegate
+{
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        textField.text = stringWithOnlyNumbersFrom(textField.text)
+    }
+    
+    func stringWithOnlyNumbersFrom(_ source:String?)->String
+    {
+        guard let text = source else {
+            return ""
+        }
+        let allowedChars = Set<Character>("1234567890.,".characters)
+        
+        let result = text.characters.filter { character -> Bool in
+            //проверим, содержит ли разрешенный набор символов наш символ
+            let containes = allowedChars.contains(character)
+            return containes
+        }
+        return String(result)
+    }
+}
+
+
+

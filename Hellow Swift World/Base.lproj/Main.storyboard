@@ -42,12 +42,18 @@
                                                         <color key="backgroundColor" red="0.98091644048690796" green="0.98466533422470093" blue="0.94977527856826782" alpha="0.33061556208053694" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
                                                         <state key="normal" title=" --&gt;"/>
+                                                        <connections>
+                                                            <action selector="toEuroPressed:" destination="rVc-Vp-AcX" eventType="touchUpInside" id="kfZ-vU-el2"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEm-s4-LfJ">
                                                         <rect key="frame" x="0.0" y="40" width="53" height="32"/>
                                                         <color key="backgroundColor" red="0.98091644048690796" green="0.98466533422470093" blue="0.94977527856826782" alpha="0.33061556208053694" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
                                                         <state key="normal" title=" &lt;--"/>
+                                                        <connections>
+                                                            <action selector="fromEuroPressed:" destination="rVc-Vp-AcX" eventType="touchUpInside" id="Mzc-JN-23J"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -83,7 +89,9 @@
                     <tabBarItem key="tabBarItem" title="Конвертор" id="nk0-dR-LGW"/>
                     <connections>
                         <outlet property="converterContainerView" destination="tB1-ca-0yV" id="WLi-i5-gqs"/>
+                        <outlet property="euroTextField" destination="BrZ-cH-paE" id="38x-gh-JEX"/>
                         <outlet property="euroToRubButton" destination="OEm-s4-LfJ" id="H57-VN-Ogy"/>
+                        <outlet property="rubTextField" destination="5iT-x7-fcJ" id="u8v-HJ-Y4n"/>
                         <outlet property="rubToEuroButton" destination="Gfg-B2-weu" id="giL-qW-0Vi"/>
                     </connections>
                 </viewController>

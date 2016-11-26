@@ -15,12 +15,19 @@ class ConverterViewController: UIViewController {
     @IBOutlet weak var rubToEuroButton: UIButton!
     @IBOutlet weak var euroToRubButton: UIButton!
     
+    @IBOutlet weak var rubTextField: UITextField!
+    @IBOutlet weak var euroTextField: UITextField!
+    
+    var converter = Converter(forwardRatio:70,
+                              reverseRatio:1 / 73.5)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUIElemnts()
     }
+    
+    //MARK: - Setup
     
     private func setupUIElemnts()
     {
@@ -49,4 +56,32 @@ class ConverterViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - UI Events
+
+    @IBAction func toEuroPressed(_ sender: UIButton)
+    {
+        guard let rubText = rubTextField.text,
+            let rubValue  = Double(rubText) else {
+                
+                euroTextField.text = "Ошибка :("
+                return
+        }
+        let euro = converter.convertBackward(amount: rubValue)
+        
+        euroTextField.text = "\(euro) €"
+    }
+    
+    @IBAction func fromEuroPressed(_ sender: UIButton)
+    {
+        guard let euroText = euroTextField.text,
+            let euroValue = Double(euroText) else {
+                rubTextField.text = "Ошибка :("
+                return
+        }
+        let rub = converter.convertForward(amount: euroValue)
+        
+        rubTextField.text = "\(rub) ₽"
+    }
+    
 }

@@ -80,11 +80,15 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="tB1-ca-0yV" firstAttribute="leading" secondItem="c11-4K-JaU" secondAttribute="leadingMargin" id="Amv-j3-28p"/>
                             <constraint firstItem="tB1-ca-0yV" firstAttribute="trailing" secondItem="c11-4K-JaU" secondAttribute="trailingMargin" id="Gsn-ID-7zd"/>
                             <constraint firstItem="tB1-ca-0yV" firstAttribute="top" secondItem="7hm-Sa-f83" secondAttribute="bottom" constant="20" id="SZe-7d-cN6"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="jtD-xN-IRs" appends="YES" id="eje-TU-h0h"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Конвертор" id="nk0-dR-LGW"/>
                     <connections>
@@ -96,6 +100,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vC8-cf-ZQA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="jtD-xN-IRs">
+                    <connections>
+                        <action selector="userTappedBackground:" destination="rVc-Vp-AcX" id="R2N-AJ-1NA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="148" y="-522.18890554722645"/>
         </scene>

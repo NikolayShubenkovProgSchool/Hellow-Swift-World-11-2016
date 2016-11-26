@@ -13,13 +13,29 @@ struct Converter {
     let forwardRatio:Double
     let reverseRatio:Double
     
+    //степень округления
+    var precision:Int {
+        didSet {
+            if precision < 0 {
+                precision = 0
+            }
+        }
+    }
+    
     func convertForward(amount:Double)->Double
     {
-        return amount * forwardRatio
+        return roundValue(amount: amount * forwardRatio)
     }
     
     func convertBackward(amount:Double)->Double
     {
-        return amount * reverseRatio
+        return roundValue(amount: amount * reverseRatio)
+    }
+    
+    private func roundValue(amount:Double)->Double
+    {
+        let multiply = pow(10, Double(precision))
+        let newValue  = round(amount * multiply) / multiply
+        return newValue
     }
 }

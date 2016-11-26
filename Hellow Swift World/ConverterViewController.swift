@@ -19,7 +19,8 @@ class ConverterViewController: UIViewController {
     @IBOutlet weak var euroTextField: UITextField!
     
     var converter = Converter(forwardRatio:70,
-                              reverseRatio:1 / 73.5)
+                              reverseRatio:1 / 73.5,
+                                 precision:2)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +39,11 @@ class ConverterViewController: UIViewController {
     
     private func setupTextFields()
     {
-        rubTextField.delegate = self
-        euroTextField.delegate = self
+        for aField in [rubTextField,euroTextField]{
+            aField?.delegate = self
+            aField?.keyboardType = .decimalPad
+            aField?.returnKeyType = .done
+        }
     }
     
     private func setupConverterContainer()
@@ -68,7 +72,7 @@ class ConverterViewController: UIViewController {
 
     @IBAction func toEuroPressed(_ sender: UIButton)
     {
-        guard let rubText = rubTextField.text,
+        guard let rubText = rubTextField.text?.convertedToNumber,
             let rubValue  = Double(rubText) else {
                 
                 euroTextField.text = "Ошибка :("
@@ -81,7 +85,7 @@ class ConverterViewController: UIViewController {
     
     @IBAction func fromEuroPressed(_ sender: UIButton)
     {
-        guard let euroText = euroTextField.text,
+        guard let euroText = euroTextField.text?.convertedToNumber,
             let euroValue = Double(euroText) else {
                 rubTextField.text = "Ошибка :("
                 return
@@ -89,6 +93,10 @@ class ConverterViewController: UIViewController {
         let rub = converter.convertForward(amount: euroValue)
         
         rubTextField.text = "\(rub) ₽"
+    }    
+    @IBAction func userTappedBackground(_ sender: UITapGestureRecognizer)
+    {
+        view.endEditing(true)
     }
 }
 
@@ -96,24 +104,16 @@ extension ConverterViewController : UITextFieldDelegate
 {
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
-        textField.text = stringWithOnlyNumbersFrom(textField.text)
+        textField.text = textField.text?.convertedToNumber
     }
     
-    func stringWithOnlyNumbersFrom(_ source:String?)->String
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
-        guard let text = source else {
-            return ""
-        }
-        let allowedChars = Set<Character>("1234567890.,".characters)
-        
-        let result = text.characters.filter { character -> Bool in
-            //проверим, содержит ли разрешенный набор символов наш символ
-            let containes = allowedChars.contains(character)
-            return containes
-        }
-        return String(result)
+        textField.resignFirstResponder()
+        return true
     }
 }
+
 
 
 

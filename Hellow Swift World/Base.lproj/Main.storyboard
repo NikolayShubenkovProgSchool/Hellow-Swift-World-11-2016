@@ -13,7 +13,7 @@
         <!--Конвертор-->
         <scene sceneID="Mgg-UV-mgw">
             <objects>
-                <viewController id="rVc-Vp-AcX" sceneMemberID="viewController">
+                <viewController id="rVc-Vp-AcX" customClass="ConverterViewController" customModule="Hellow_Swift_World" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7hm-Sa-f83"/>
                         <viewControllerLayoutGuide type="bottom" id="knj-OU-kHj"/>
@@ -81,6 +81,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Конвертор" id="nk0-dR-LGW"/>
+                    <connections>
+                        <outlet property="converterContainerView" destination="tB1-ca-0yV" id="WLi-i5-gqs"/>
+                        <outlet property="euroToRubButton" destination="OEm-s4-LfJ" id="H57-VN-Ogy"/>
+                        <outlet property="rubToEuroButton" destination="Gfg-B2-weu" id="giL-qW-0Vi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vC8-cf-ZQA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

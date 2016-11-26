@@ -10,12 +10,41 @@ import UIKit
 
 class ConverterViewController: UIViewController {
 
+    @IBOutlet weak var converterContainerView: UIView!
+    
+    @IBOutlet weak var rubToEuroButton: UIButton!
+    @IBOutlet weak var euroToRubButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        setupUIElemnts()
+    }
+    
+    private func setupUIElemnts()
+    {
+        setupConverterContainer()
+        setupButtons()
+    }
+    
+    private func setupConverterContainer()
+    {
+        converterContainerView.layer.cornerRadius = 8
+        converterContainerView.clipsToBounds = true
+    }
+    
+    private func setupButtons()
+    {
+        for aButton in [euroToRubButton,rubToEuroButton] {
+            aButton?.layer.cornerRadius = 8
+            aButton?.clipsToBounds = true
+            aButton?.layer.borderColor = UIColor.white.cgColor
+            aButton?.layer.borderWidth = 1
+        }
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
